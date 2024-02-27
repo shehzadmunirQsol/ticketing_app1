@@ -8,10 +8,13 @@ class UserService {
   async create(data: z.infer<typeof insertUserSchema>) {
     // const user = await prisma.customer.create({ data });
     console.log({ data });
-    const user = await db.insert(customerSchema).values({
-      ...data,
-    });
-    return user;
+    const user = await db
+      .insert(customerSchema)
+      .values({
+        ...data,
+      })
+      .returning();
+    return user?.length > 0 ? user[0] : null;
   }
 
   // async findMany() {
