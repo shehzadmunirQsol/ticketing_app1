@@ -1,21 +1,14 @@
 import { router, publicProcedure } from "../trpc";
 import { TRPCError } from "@trpc/server";
-import {
-  loginSchema,
-  registerSchema,
-  logoutSchema,
-  updateUserSchema,
-  deleteUserSchema,
-  getAdminSchema,
-} from "~/schema/adminUser";
+import { loginSchema, getAdminSchema, logoutSchema } from "~/schema/adminUser";
 import { hashPass, isSamePass } from "~/utils/hash";
-import { signJWT, verifyJWT } from "~/utils/jwt";
+import { signJWT, verifyJWT } from "~/utils/adminJwt";
 import { setCookie, deleteCookie } from "cookies-next";
 import userAdminService from "~/server/services/adminUser";
 
 export const adminUserRouter = router({
   me: publicProcedure.input(getAdminSchema).query(async ({ ctx }) => {
-    const token = ctx?.req?.cookies["winnar-admin-token"];
+    const token = ctx?.req?.cookies["ticketing-admin-token"];
     console.log({ token });
 
     let userData: any;
@@ -135,7 +128,7 @@ export const adminUserRouter = router({
   logout: publicProcedure.input(logoutSchema).mutation(async ({ ctx }) => {
     try {
       const { req, res } = ctx;
-      deleteCookie("winnar-token", {
+      deleteCookie("ticketing-admin-token", {
         req,
         res,
         // httpOnly: true,

@@ -23,6 +23,7 @@ import {
   userAdminIsLogin,
 } from "~/store/reducers/adminAuthSlice";
 import toast from "react-hot-toast";
+import { LoadingDialog } from "../modal/loadingModal";
 
 const exampleFormSchema = z.object({
   username: z
@@ -173,6 +174,7 @@ export function LoginForm() {
           Submit
         </Button>
       </form>
+      <LoadingDialog open={loginUser.isLoading} text={"Loading..."} />
     </Form>
   );
 }
