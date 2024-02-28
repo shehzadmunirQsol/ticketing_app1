@@ -34,3 +34,15 @@ export const validateRegixEmail = (email: string): boolean => {
   const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/;
   return regex.test(email);
 };
+export function formatTrpcError(trpcError = "Something went wrong!" as string) {
+  if (trpcError?.includes("[\n  {\n  ")) {
+    const formattedError = JSON.parse(trpcError);
+    const msgError =
+      formattedError?.length > 0
+        ? formattedError[0].message
+        : "Internal server error";
+    return msgError;
+  } else {
+    return trpcError;
+  }
+}

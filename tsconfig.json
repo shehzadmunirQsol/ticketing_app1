@@ -16,9 +16,19 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"]
+      "~/*": ["src/*"],
+      "#/*": ["./*"],
+      "@/ui/*": ["src/components/ui/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "./*.js",
+    "./src/**/*.js",
+    "src/components/app/cms/index.jsx",
+    "src/components/admin/cms/script.jsx"
+  ],
   "exclude": ["node_modules"]
 }

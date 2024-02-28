@@ -1,8 +1,8 @@
 import { Hono } from "hono";
 import { handle } from "hono/vercel";
 import { zValidator } from "@hono/zod-validator";
-import { loginCustomerSchema } from "@/src/schema/auth";
-import routes from "@/src/server/routes";
+import { loginCustomerSchema } from "~/schema/auth";
+import routes from "~/server/routes";
 export const config = {
   runtime: "edge",
 };

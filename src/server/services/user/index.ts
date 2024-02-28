@@ -1,8 +1,7 @@
-import { db } from "@/db";
-import { customerSchema, insertUserSchema } from "@/db/schema";
 import { eq } from "drizzle-orm";
-import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
+import { db } from "~/db";
+import { customerSchema, insertUserSchema } from "~/db/schema/user.schema";
 
 class UserService {
   async create(data: z.infer<typeof insertUserSchema>) {

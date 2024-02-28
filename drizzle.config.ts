@@ -4,7 +4,7 @@ if (!process.env.PG_DATABASE_URL) {
   throw new Error("DATABASE_URL is missing");
 }
 export default {
-  schema: "./db/schema.ts",
+  schema: "./src/db/schema",
   out: "./drizzle",
   driver: "pg",
   dbCredentials: {

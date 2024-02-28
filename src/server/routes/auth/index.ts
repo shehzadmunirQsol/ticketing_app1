@@ -1,11 +1,12 @@
 import { Hono } from "hono";
 import { ZodError } from "zod";
-import userService from "../../services/user";
+import userService from "~/server/services/user";
 import userSchema from "./schema";
 import { HTTPException } from "hono/http-exception";
-import { signJWT } from "../../../utils/jwt";
-import { registerCustomerSchema } from "@/src/schema/project";
-import { loginCustomerSchema } from "@/src/schema/auth";
+
+import { registerCustomerSchema } from "~/schema/project";
+import { loginCustomerSchema } from "~/schema/auth";
+import { signJWT } from "~/utils/jwt";
 export const config = {
   runtime: "edge",
 };
